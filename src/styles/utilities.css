@@ -8,6 +8,7 @@
     margin-right: auto;
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
+    min-width: 0;
 }
 
 .container-fluid {
@@ -179,6 +180,10 @@
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
 
     .grid-cols-2,
     .grid-cols-3,
@@ -186,8 +191,20 @@
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
-    .btn {
+    .btn:not(.navbar-cta):not(.sidebar-cta) {
         width: 100%;
         min-height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-xs);
     }
 }

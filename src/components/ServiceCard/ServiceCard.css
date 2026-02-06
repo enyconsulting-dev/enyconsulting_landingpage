@@ -6,13 +6,13 @@
     border-radius: var(--radius-lg);
     padding: var(--spacing-xl);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all var(--transition-base);
     min-height: 220px;
 }
 
 .service-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(150, 8, 142, 0.15);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
     border-color: var(--color-primary-purple);
 }
 

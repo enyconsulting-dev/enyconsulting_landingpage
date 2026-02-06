@@ -119,15 +119,25 @@ const HeroCarousel = () => {
             onTouchEnd={handleTouchEnd}
             aria-label="Hero Carousel"
         >
-            <div className="carousel-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+            <div
+                className="carousel-track"
+                style={{
+                    width: `${slides.length * 100}%`,
+                    transform: `translateX(-${currentSlide * (100 / slides.length)}%)`
+                }}
+            >
                 {slides.map((slide) => (
                     <div
                         key={slide.id}
                         className="carousel-slide"
-                        style={{ backgroundImage: `url(${slide.backgroundImage})` }}
+                        style={{
+                            width: `${100 / slides.length}%`,
+                            flex: `0 0 ${100 / slides.length}%`,
+                            backgroundImage: `url(${slide.backgroundImage})`
+                        }}
                     >
                         <div className="slide-overlay"></div>
-                        <div className="slide-content container">
+                        <div className="slide-content">
                             <h1 className="slide-title">{slide.title}</h1>
                             <p className="slide-description">{slide.description}</p>
                             <button className="btn btn-primary slide-cta">
