@@ -1,10 +1,11 @@
 .platforms-page {
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .platforms-hero {
     padding: 4rem 0;
-    border-bottom: 1px solid var(--color-slate-200);
+    border-bottom: 1px solid #e2e8f0;
     background: white;
 }
 
@@ -12,18 +13,20 @@
     max-width: 56rem;
     margin: 0 auto;
     text-align: center;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
 }
 
 .platforms-hero h1 {
     font-size: 3.75rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    color: var(--color-slate-900);
+    color: #0f172a;
 }
 
 .hero-description {
     font-size: 1.25rem;
-    color: var(--color-slate-600);
+    color: #475569;
     line-height: 1.6;
     max-width: 48rem;
     margin: 0 auto;
@@ -38,7 +41,7 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    color: var(--color-slate-900);
+    color: #0f172a;
 }
 
 .platforms-grid {
@@ -47,11 +50,13 @@
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
 }
 
 .platform-card {
     background: white;
-    border: 1px solid var(--color-slate-200);
+    border: 1px solid #e2e8f0;
     border-radius: 1rem;
     padding: 2rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -85,12 +90,12 @@
 .platform-content h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--color-slate-900);
+    color: #0f172a;
     margin-bottom: 1rem;
 }
 
 .platform-description {
-    color: var(--color-slate-600);
+    color: #475569;
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
@@ -98,7 +103,7 @@
 .platform-features h4 {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--color-slate-900);
+    color: #0f172a;
     margin-bottom: 0.5rem;
 }
 
@@ -109,7 +114,7 @@
 }
 
 .platform-features li {
-    color: var(--color-slate-600);
+    color: #475569;
     font-size: 0.9rem;
     margin-bottom: 0.25rem;
     padding-left: 1rem;
@@ -118,7 +123,7 @@
 
 .platform-features li:before {
     content: '✓';
-    color: var(--color-primary);
+    color: var(--color-primary-purple);
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -130,7 +135,7 @@
 
 .platforms-cta {
     padding: 5rem 0;
-    background: var(--color-slate-50);
+    background: #f8fafc;
 }
 
 .cta-content {
@@ -143,12 +148,12 @@
     font-size: 2.25rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: var(--color-slate-900);
+    color: #0f172a;
 }
 
 .cta-content p {
     font-size: 1.125rem;
-    color: var(--color-slate-600);
+    color: #475569;
     margin-bottom: 2rem;
 }
 
@@ -157,7 +162,7 @@
     padding: 1rem 2rem;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
     .platforms-hero h1 {
         font-size: 3rem;
@@ -174,11 +179,11 @@
 
 @media (max-width: 768px) {
     .platforms-hero {
-        padding: 3rem 0;
+        padding: 2.5rem var(--spacing-md);
     }
 
     .platforms-hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .hero-description {
@@ -186,12 +191,17 @@
     }
 
     .platforms-section {
-        padding: 3rem 0;
+        padding: 2.5rem var(--spacing-md);
     }
 
     .section-title {
-        font-size: 2rem;
-        margin-bottom: 2rem;
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .platforms-grid {
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .platform-card {
@@ -204,42 +214,71 @@
         margin-bottom: 1rem;
     }
 
-
     .platform-content h3 {
         font-size: 1.25rem;
     }
 
     .platforms-cta {
-        padding: 3rem 0;
+        padding: 2.5rem var(--spacing-md);
+    }
+
+    .cta-content {
+        padding: 0 var(--spacing-sm);
     }
 
     .cta-content h2 {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 }
 
 @media (max-width: 480px) {
+    .platforms-hero {
+        padding: 2rem var(--spacing-sm);
+    }
+
     .platforms-hero h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .hero-description {
+        font-size: var(--font-size-sm);
     }
 
     .platforms-section {
-        padding: 2rem 0;
+        padding: 2rem var(--spacing-sm);
     }
 
     .section-title {
-        font-size: 1.75rem;
+        font-size: 1.375rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .platform-card {
+        padding: 1.25rem;
     }
 
     .platform-content h3 {
         font-size: 1.125rem;
     }
 
+    .platform-description {
+        font-size: var(--font-size-sm);
+    }
+
+    .platforms-cta {
+        padding: 2rem var(--spacing-sm);
+    }
+
     .cta-content h2 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 
     .cta-content p {
-        font-size: 1rem;
+        font-size: var(--font-size-sm);
+    }
+
+    .cta-button {
+        width: 100%;
+        max-width: 280px;
     }
 }

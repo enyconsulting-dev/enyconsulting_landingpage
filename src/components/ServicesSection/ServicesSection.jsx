@@ -1,31 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
 import ServiceCard from '../ServiceCard/ServiceCard'
 import './ServicesSection.css'
 
 const ServicesSection = () => {
-    const [visibleCards, setVisibleCards] = useState([])
-    const cardsRef = useRef([])
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const index = cardsRef.current.indexOf(entry.target)
-                        setVisibleCards((prev) => [...new Set([...prev, index])])
-                    }
-                })
-            },
-            { threshold: 0.2 }
-        )
-
-        cardsRef.current.forEach((card) => {
-            if (card) observer.observe(card)
-        })
-
-        return () => observer.disconnect()
-    }, [])
-
     const services = [
         {
             icon: '/icon2225-k8tc.svg',
@@ -82,14 +58,7 @@ const ServicesSection = () => {
 
                 <div className="services-grid">
                     {services.map((service, index) => (
-                        <div
-                            key={index}
-                            ref={(el) => (cardsRef.current[index] = el)}
-                            className={`service-card-wrapper ${visibleCards.includes(index) ? 'visible' : ''}`}
-                            style={{ animationDelay: `${index * 0.08}s` }}
-                        >
-                            <ServiceCard {...service} />
-                        </div>
+                        <ServiceCard key={index} {...service} />
                     ))}
                 </div>
             </div>

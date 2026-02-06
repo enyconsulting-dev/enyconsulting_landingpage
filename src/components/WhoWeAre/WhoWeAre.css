@@ -45,15 +45,13 @@
     padding: var(--spacing-xl);
     border-radius: var(--radius-lg);
     background-color: #f8fafc;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid transparent;
+    transition: all var(--transition-base);
 }
 
 .metric-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(150, 8, 142, 0.15);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
     background-color: var(--color-white);
-    border-color: rgba(150, 8, 142, 0.2);
 }
 
 .metric-icon {

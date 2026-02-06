@@ -1,10 +1,11 @@
 .capabilities-page {
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .capabilities-hero {
     padding: 4rem 0;
-    border-bottom: 1px solid var(--color-slate-200);
+    border-bottom: 1px solid #e2e8f0;
     background: white;
 }
 
@@ -12,18 +13,20 @@
     max-width: 56rem;
     margin: 0 auto;
     text-align: center;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
 }
 
 .capabilities-hero h1 {
     font-size: 3.75rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    color: var(--color-slate-900);
+    color: #0f172a;
 }
 
 .hero-description {
     font-size: 1.25rem;
-    color: var(--color-slate-600);
+    color: #475569;
     line-height: 1.6;
     max-width: 48rem;
     margin: 0 auto;
@@ -38,7 +41,7 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    color: var(--color-slate-900);
+    color: #0f172a;
 }
 
 .capabilities-grid {
@@ -46,6 +49,8 @@
     gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
 }
 
 .capability-item {
@@ -86,12 +91,12 @@
 .capability-content h3 {
     font-size: 1.875rem;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-primary-purple);
     margin-bottom: 1rem;
 }
 
 .capability-content p {
-    color: var(--color-slate-600);
+    color: #475569;
     line-height: 1.7;
     margin-bottom: 1.5rem;
 }
@@ -100,7 +105,7 @@
     margin-top: 1.5rem;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
     .capabilities-hero h1 {
         font-size: 3rem;
@@ -126,11 +131,11 @@
 
 @media (max-width: 768px) {
     .capabilities-hero {
-        padding: 3rem 0;
+        padding: 2.5rem var(--spacing-md);
     }
 
     .capabilities-hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .hero-description {
@@ -138,37 +143,72 @@
     }
 
     .capabilities-section {
-        padding: 3rem 0;
+        padding: 2.5rem var(--spacing-md);
     }
 
-    .section-title {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .capability-image img {
-        height: 250px;
-    }
-
-    .capability-content h3 {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .capabilities-hero h1 {
-        font-size: 2rem;
-    }
-
-    .capabilities-section {
-        padding: 2rem 0;
+    .capabilities-grid {
+        gap: 2.5rem;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .section-title {
         font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .capability-item {
+        gap: 1.25rem;
+    }
+
+    .capability-image img {
+        height: 220px;
+    }
+
+    .capability-content h3 {
+        font-size: 1.375rem;
+    }
+
+    .capability-content p {
+        font-size: var(--font-size-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .capabilities-hero {
+        padding: 2rem var(--spacing-sm);
+    }
+
+    .capabilities-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-description {
+        font-size: var(--font-size-sm);
+    }
+
+    .capabilities-section {
+        padding: 2rem var(--spacing-sm);
+    }
+
+    .capabilities-grid {
+        gap: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.375rem;
+        margin-bottom: 1.25rem;
     }
 
     .capability-image img {
         height: 200px;
+    }
+
+    .capability-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .capability-content p {
+        font-size: var(--font-size-xs);
     }
 }
