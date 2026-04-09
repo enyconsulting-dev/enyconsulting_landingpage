@@ -1,0 +1,103 @@
+.services-detail-section {
+    padding-top: var(--spacing-2xl);
+}
+
+.services-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-detail-card {
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.service-detail-card:last-of-type {
+    border-bottom: none;
+}
+
+.service-detail-title {
+    font-family: var(--font-family-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.service-detail-body {
+    font-size: 1rem;
+    color: var(--color-gray-600);
+    line-height: 1.75;
+    margin-bottom: var(--spacing-md);
+}
+
+.service-detail-extra {
+    margin-top: var(--spacing-md);
+}
+
+.service-detail-subhead {
+    font-size: 0.72rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-orchid);
+    margin: var(--spacing-lg) 0 var(--spacing-sm);
+}
+
+.service-detail-items {
+    margin: 0 0 var(--spacing-lg);
+    padding-left: 1.25rem;
+    color: var(--color-gray-600);
+    line-height: 1.7;
+}
+
+.service-detail-items li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.service-case-ref {
+    font-size: 0.9rem;
+    color: var(--color-gray-800);
+    background: var(--color-gray-100);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.service-detail-cta {
+    text-transform: none;
+    letter-spacing: 0.03em;
+}
+
+.services-not-sure-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services-not-sure-title {
+    font-family: var(--font-family-display);
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-gray-800);
+}
+
+.services-not-sure-body {
+    font-size: 1.05rem;
+    color: var(--color-gray-600);
+    line-height: 1.75;
+    margin-bottom: var(--spacing-xl);
+}
+
+.lead-capture--services {
+    margin: 0 auto;
+}
+
+.services-brochure {
+    padding-top: 0;
+}

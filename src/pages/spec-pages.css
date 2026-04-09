@@ -1,0 +1,99 @@
+/* Shared inner-page hero & sections — ENY handoff spec */
+.page-hero-spec {
+    position: relative;
+    min-height: min(60vh, 560px);
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--color-blue-deep) 0%, var(--color-dark) 60%, #1a0a2e 100%);
+    overflow: hidden;
+}
+
+.page-hero-spec::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+}
+
+.page-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    padding: var(--spacing-4xl) var(--container-padding);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-md);
+}
+
+.page-hero-spec h1 {
+    font-family: var(--font-family-display);
+    font-size: clamp(1.85rem, 4vw, 3rem);
+    font-weight: 400;
+    color: var(--color-white);
+    line-height: 1.15;
+    margin-bottom: var(--spacing-md);
+}
+
+.page-hero-spec h1 em {
+    font-style: italic;
+    color: var(--color-gold-light);
+}
+
+.page-hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.page-section-block {
+    padding: var(--spacing-4xl) 0;
+}
+
+.page-section-block.alt {
+    background: var(--color-light);
+}
+
+.page-prose {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.page-prose p {
+    font-size: 1.05rem;
+    color: var(--color-gray-600);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+}
+
+.page-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2xl);
+    margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+    .page-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}

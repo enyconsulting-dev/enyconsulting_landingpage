@@ -1,0 +1,52 @@
+.industries-page-hero {
+    min-height: min(50vh, 480px);
+}
+
+.industries-detail-section {
+    background: var(--color-white);
+    padding: var(--spacing-4xl) 0;
+}
+
+.industries-detail-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+}
+
+.industry-detail-card {
+    padding-bottom: var(--spacing-2xl);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.industry-detail-card:last-child {
+    border-bottom: none;
+}
+
+.industry-detail-title {
+    font-family: var(--font-family-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.industry-detail-body {
+    font-size: 1rem;
+    color: var(--color-gray-600);
+    line-height: 1.75;
+    margin-bottom: var(--spacing-md);
+}
+
+.industry-detail-caps {
+    font-size: 0.88rem;
+    color: var(--color-gray-800);
+    line-height: 1.65;
+    margin-bottom: var(--spacing-lg);
+}
+
+.industry-detail-cta {
+    text-transform: none;
+    letter-spacing: 0.03em;
+}
