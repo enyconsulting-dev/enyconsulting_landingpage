@@ -1,36 +1,43 @@
 import { useEffect } from 'react'
 import Navbar from '../components/Navbar/Navbar'
-import HeroCarousel from '../components/HeroCarousel/HeroCarousel'
-import WhoWeAre from '../components/WhoWeAre/WhoWeAre'
-import ServicesSection from '../components/ServicesSection/ServicesSection'
 import Footer from '../components/Footer/Footer'
+import HomeHero from '../components/home/HomeHero'
+import StatsBar from '../components/home/StatsBar'
+import {
+    AsFeaturedBar,
+    WhatWeDoSection,
+    IndustriesPreview,
+    FounderSpotlight,
+    BrandsPreview,
+    CaseStudiesPreview,
+    TestimonialsSection,
+    LeadCapture,
+    HomeCtaBanner,
+} from '../components/home/HomeSections'
 import './HomePage.css'
+import '../components/home/HomeSections.css'
 
 const HomePage = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
+        document.title = 'ENY Consulting | Global Business Technology & Digital Transformation'
     }, [])
 
     return (
         <div className="home-page">
             <Navbar />
             <main className="main-content">
-                <HeroCarousel />
-                <WhoWeAre />
-                <ServicesSection />
-
-                {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container cta-container">
-                        <h2 className="cta-title">Ready to Transform Your Business?</h2>
-                        <p className="cta-description">
-                            Join hundreds of leading organizations that have achieved measurable success with Eny.
-                        </p>
-                        <button className="btn btn-primary cta-button">
-                            Start Your Journey →
-                        </button>
-                    </div>
-                </section>
+                <HomeHero />
+                <StatsBar />
+                <AsFeaturedBar />
+                <WhatWeDoSection />
+                <IndustriesPreview />
+                <FounderSpotlight />
+                <BrandsPreview />
+                <CaseStudiesPreview />
+                <TestimonialsSection />
+                <LeadCapture />
+                <HomeCtaBanner />
             </main>
             <Footer />
         </div>

@@ -1,139 +1,190 @@
-import { useState, useEffect } from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/Footer/Footer'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import PageShell from '../components/PageShell'
+import { GHL_BOOKING_URL } from '../config/site'
+import './spec-pages.css'
 import './AboutUsPage.css'
 
+const VALUES = [
+    'Excellence — We set the standard. Every deliverable, every engagement, every interaction reflects our commitment to being the best in the room.',
+    'Innovation — We don’t follow trends. We leverage cutting-edge technology and fresh thinking to solve problems others can’t.',
+    'Empowerment — We exist to make the people and organizations we work with stronger, smarter, and more capable than before.',
+    'Integrity — We tell clients what they need to hear, not what they want to hear. Trust is earned through honesty and follow-through.',
+    'Global Impact — We think beyond borders. Our work spans three continents because talent and ambition are everywhere.',
+    'Collaboration — The best results come from working together. We partner with clients, not just consult for them.',
+    'Resilience — We were built for complexity. When things get hard, we get sharper.',
+    'Accountability — We own our commitments. Deadlines are real. Results are measurable. Excuses are unacceptable.',
+    'Customer Success — Our success is measured by our clients’ outcomes. If you don’t win, we haven’t done our job.',
+    'Continuous Learning — The world doesn’t stand still and neither do we. We invest in our own growth so we can invest in yours.',
+]
+
+const IMPACT_STATS = [
+    '$6B+ — Assets managed in our signature core banking transformation',
+    '125,000+ — Credit union members impacted across financial institutions',
+    '100,000+ — Professionals trained through our education programs',
+    '90+ — Countries reached with our training and consulting services',
+    '50+ — Years of combined consulting expertise across our team',
+    '20+ — Industries served with specialized domain knowledge',
+    '3 — Continents with active operations (North America, Africa, Europe outreach)',
+    '7+ — Years delivering high-impact solutions globally',
+]
+
+const AWARDS = [
+    'Canada’s Top 100 Most Powerful Women — RBC Future Launch Future Leaders Category',
+    'RBC Canadian Women Entrepreneur Awards — Ones to Watch Winner (2020)',
+    'Women of Inspiration Award for Mentorship (2019)',
+    'Top 8 Female Business Analysis Influencers Globally — IIBA Recognition',
+    'Forbes Feature',
+    'CTV National Television Feature',
+    'CBC Feature',
+    'The Guardian Feature',
+    'The Nation (Nigeria) Feature',
+    'LinkedIn Top Voice',
+    'Top 10 Entrepreneurs You Must Follow — Hustle World',
+    'Campaign Ambassador for the United Nations & UNHCR',
+]
+
 const AboutUsPage = () => {
-    const [scrollY, setScrollY] = useState(0)
-
     useEffect(() => {
-        // Scroll to top on page load
         window.scrollTo(0, 0)
-
-        const handleScroll = () => {
-            setScrollY(window.scrollY)
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true })
-        return () => window.removeEventListener('scroll', handleScroll)
+        document.title = 'About ENY Consulting | Award-Winning Global Consulting Firm'
     }, [])
 
-    const heroHeight = typeof window !== 'undefined' ? window.innerHeight : 700
-    const parallaxOffset = scrollY < heroHeight ? Math.min(scrollY * 0.5, 400) : 400
-
     return (
-        <div className="about-us-page">
-            <Navbar />
-            <main className="main-content">
-                {/* Hero Section with Parallax */}
-                <section className="hero-section">
-                    <div 
-                        className="hero-slide-bg" 
-                        style={{ 
-                            backgroundImage: 'url(/Eno_b.jpg)',
-                            opacity: scrollY < heroHeight ? 1 : 0,
-                            visibility: scrollY < heroHeight ? 'visible' : 'hidden'
-                        }}
-                    >
-                        <div className="hero-gradient"></div>
-                    </div>
-                    <div className="scroll-indicator">
-                        <span className="scroll-text">SCROLL</span>
-                        <div className="scroll-line"></div>
-                    </div>
-                    <div className="container">
-                        <div 
-                            className="hero-content" 
-                            style={{ 
-                                transform: `translate(-50%, calc(-50% + ${parallaxOffset}px))`,
-                                opacity: Math.max(1 - scrollY / 500, 0)
-                            }}
-                        >
-                            <p className="hero-tagline">
-                                We partner with clients to simplify, strengthen, and transform their businesses.
-                            </p>
-                            <p className="hero-about-text">
-                                ABOUT US
-                            </p>
-                        </div>
-                    </div>
-                </section>
+        <PageShell className="about-page">
+            <section className="page-hero-spec">
+                <div className="page-hero-inner">
+                    <p className="page-hero-eyebrow">About ENY Consulting</p>
+                    <h1>Award-Winning Business Technology Consulting. Delivered Globally.</h1>
+                    <p className="page-hero-sub">
+                        ENY Consulting is a multiple award-winning business technology and consulting firm with offices in
+                        Canada, the USA, and Nigeria. With over seven years of proven expertise, we operate on a global
+                        scale, delivering high-impact solutions to clients across industries.
+                    </p>
+                </div>
+            </section>
 
-                {/* Mission & Vision Section */}
-                <section className="mission-vision-section">
-                    <div className="container">
-                        <h2 className="section-title">Our Mission & Vision</h2>
-                        <div className="mission-vision-grid">
-                            <div className="mission-card">
-                                <div className="card-icon">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                                    </svg>
-                                </div>
-                                <h3>Our Mission</h3>
-                                <p>
-                                    To empower organizations and professionals with the strategic insights, analytical rigor, and innovative solutions needed to excel in an ever-evolving business landscape.
-                                </p>
-                            </div>
-                            <div className="vision-card">
-                                <div className="card-icon">
-                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                                        <path d="M12 17h.01"/>
-                                    </svg>
-                                </div>
-                                <h3>Our Vision</h3>
-                                <p>
-                                    To be the global leader in transformative consulting and professional development, recognized for creating lasting impact through expertise, innovation, and unwavering commitment to excellence.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+            <section className="page-section-block">
+                <div className="container about-prose">
+                    <p className="section-eyebrow">Our Story</p>
+                    <h2 className="about-h2">From One Woman&apos;s Vision to a Global Consulting Firm</h2>
+                    <p>
+                        ENY Consulting was founded by Eno Eka — a Nigerian-born accountant who made a bold career pivot
+                        into business analysis, relocated to Canada in 2018, landed a six-figure consulting role within
+                        six months, and launched her consulting company within nine months of arriving. No connections. No
+                        local experience. Just strategy, skill, and an unshakeable commitment to execution.
+                    </p>
+                    <p>
+                        What started as a one-woman consulting practice in Calgary has grown into a global firm serving
+                        corporations, governments, and professionals across three continents. Along the way, Eno led one of
+                        the largest credit union mergers in Canadian history — a $6B+ core banking digital transformation
+                        impacting 125,000+ members — cementing ENY&apos;s reputation for delivering at the highest level.
+                    </p>
+                    <p>
+                        Today, ENY Consulting operates at the intersection of strategy, technology, and human capital. We
+                        lead digital transformation engagements for mid-market and enterprise clients. We advise governments
+                        on AI readiness and workforce development. And through our education ecosystem — Business Analysis
+                        School, Business Consulting School, and Thought Leadership Business School — we have trained over
+                        100,000 professionals across 90+ countries.
+                    </p>
+                    <p>
+                        Our philosophy is simple: the right strategy, executed with discipline, creates extraordinary
+                        results. Every engagement we take on reflects that belief. We don&apos;t do generic. We don&apos;t
+                        do cookie-cutter. We build custom solutions that drive measurable revenue growth, operational
+                        efficiency, and lasting competitive advantage.
+                    </p>
+                </div>
+            </section>
 
-                {/* Founder Section */}
-                <section className="founder-section">
-                    <div className="container">
-                        <h2 className="section-title text-center">Meet Our Founder</h2>
-                        <div className="founder-content">
-                            <div className="founder-image">
-                                <img
-                                    src="/Eno.jpg"
-                                    alt="Eno Eka"
-                                />
-                            </div>
-                            <div className="founder-info">
-                                <h3>Eno Eka</h3>
-                                <p className="founder-title">Founder & CEO</p>
-                                <p className="founder-credentials">CBAP, PROSCI, SMC, AAC, SPOC, SCC, ITIL</p>
-                                <div className="founder-description">
-                                    <p>
-                                        My name is Eno Eka, I am a Business Analyst and Change Manager based in Calgary, Alberta.
-                                    </p>
-                                    <p>
-                                        I am the CEO of Eny Consulting Inc, an IT Business Consulting Company where we help businesses leverage technology to improve business processes & increase revenue, recruit and train employees in the latest technology systems and certification.
-                                    </p>
-                                    <p>
-                                        I am the Founder of Business Analysis School where we help professionals leverage their experience to transition into tech and increase their income using Business Analysis skills.
-                                    </p>
-                                    <p>
-                                        I am an award-winning career coach and speaker who has been recognized for helping more than 20,000 professionals around the world kick start their professional careers.
-                                    </p>
-                                    <p>
-                                        I am a business analysis content developer and course instructor at the University of Manitoba.
-                                    </p>
-                                    <p>
-                                        Since arriving in Canada in 2018, I have been passionate about impacting the lives of thousands of immigrants to Canada and helping them get decent professional jobs that increase their incomes significantly.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+            <section className="page-section-block alt">
+                <div className="container about-mission-grid">
+                    <div>
+                        <p className="section-eyebrow">Our Mission</p>
+                        <p className="about-mission-text">
+                            To equip professionals and organizations with the skills, strategies, and technology to lead
+                            transformation, drive innovation, and achieve sustainable growth in an AI-driven world.
+                        </p>
                     </div>
-                </section>
-            </main>
-            <Footer />
-        </div>
+                    <div>
+                        <p className="section-eyebrow">Our Vision</p>
+                        <p className="about-mission-text">
+                            To be the global leader in workforce transformation and business innovation — empowering
+                            people and organizations to shape the future through strategic thinking, data-driven
+                            decisions, and responsible technology adoption.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section className="page-section-block">
+                <div className="container">
+                    <p className="section-eyebrow">What We Stand For</p>
+                    <h2 className="about-h2">Our Core Values</h2>
+                    <ul className="about-values-list">
+                        {VALUES.map((v) => (
+                            <li key={v.slice(0, 24)}>{v}</li>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+
+            <section className="page-section-block alt">
+                <div className="container">
+                    <p className="section-eyebrow">Our Impact</p>
+                    <h2 className="about-h2">The Numbers That Define Our Reach</h2>
+                    <ul className="about-impact-list">
+                        {IMPACT_STATS.map((s) => (
+                            <li key={s}>{s}</li>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+
+            <section className="page-section-block">
+                <div className="container">
+                    <p className="section-eyebrow">Awards &amp; Recognition</p>
+                    <h2 className="about-h2">Recognized Globally for Excellence</h2>
+                    <p className="about-intro">
+                        Our work and our founder have been recognized by some of the most respected institutions and media
+                        outlets in the world.
+                    </p>
+                    <div className="about-awards">
+                        {AWARDS.map((a) => (
+                            <span key={a} className="about-award-badge">
+                                {a}
+                            </span>
+                        ))}
+                    </div>
+                    <div className="about-cta-row">
+                        <a href={GHL_BOOKING_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            Work With an Award-Winning Team — Book a Discovery Call
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section className="page-section-block alt">
+                <div className="container about-prose">
+                    <p className="section-eyebrow">Our Team</p>
+                    <h2 className="about-h2">A Global Team of Experts</h2>
+                    <p>
+                        ENY Consulting brings together a team of seasoned consultants, analysts, strategists, and
+                        educators with a combined 50+ years of experience across 20+ industries. Our team members are
+                        certified professionals (CBAP, PROSCI, PMP, ITIL, Six Sigma, Scrum) with hands-on experience
+                        delivering complex transformation programs for Fortune 500 companies, government agencies, and
+                        high-growth businesses.
+                    </p>
+                    <p>
+                        We don&apos;t believe in generalists. Every consultant we deploy brings deep domain expertise and a
+                        track record of results. When you work with ENY, you work with people who have been where you&apos;re
+                        trying to go — and know exactly how to get you there.
+                    </p>
+                    <Link to="/founder" className="btn btn-ghost about-team-cta">
+                        Meet Our Founder
+                    </Link>
+                </div>
+            </section>
+        </PageShell>
     )
 }
 

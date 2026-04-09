@@ -1,16 +1,40 @@
 :root {
-  /* Colors - Preserving original design */
-  --color-primary-purple: #96088E;
+  /* Handoff spec — ENY Consulting (April 2026) */
+  --color-orchid: #96088e;
+  --color-orchid-light: #b84db2;
+  --color-orchid-glow: rgba(150, 8, 142, 0.15);
+  --color-blue: #073b6a;
+  --color-blue-deep: #052d52;
+  --color-blue-light: #0a5599;
+  --color-gold: #d4a843;
+  --color-gold-light: #e8c97a;
+  --color-dark: #0a0a12;
+  --color-light: #f8f6fa;
+  --color-gray-100: #f3f1f5;
+  --color-gray-200: #e5e1e8;
+  --color-gray-400: #9e97a5;
+  --color-gray-600: #6b6573;
+  --color-gray-800: #2d2a33;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-900: #0f172a;
+
+  /* Legacy aliases (existing components) */
+  --color-primary-purple: var(--color-orchid);
   --color-primary-purple-rgb: 150, 8, 142;
-  --color-dark-bg: #0F172B;
+  --color-dark-bg: var(--color-dark);
   --color-black: #000000;
-  --color-white: #FFFFFF;
+  --color-white: #ffffff;
   --color-white-90: rgba(255, 254, 254, 0.9);
   --color-white-50: rgba(255, 255, 255, 0.5);
-  
-  /* Typography */
-  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-campton: 'Campton', var(--font-family-base);
+
+  /* Typography — Plus Jakarta Sans + DM Serif Display (handoff) */
+  --font-family-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-display: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-family-campton: var(--font-family-base);
   
   /* Font Sizes */
   --font-size-xs: 0.8125rem;    /* 13px */
@@ -53,9 +77,11 @@
   --radius-lg: 0.75rem;      /* 12px */
   --radius-full: 9999px;
   
-  /* Transitions */
+  /* Transitions & easing (handoff) */
+  --ease-standard: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-strong: cubic-bezier(0.22, 1, 0.36, 1);
   --transition-fast: 150ms ease-in-out;
-  --transition-base: 300ms ease-in-out;
+  --transition-base: 300ms var(--ease-standard);
   --transition-slow: 500ms ease-in-out;
   
   /* Shadows */
@@ -73,7 +99,7 @@
   --z-popover: 1060;
   --z-tooltip: 1070;
   
-  /* Breakpoints (for JS) */
+  /* Breakpoints (for JS) — handoff: tablet 768, desktop 1024, wide 1400 */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;

@@ -70,6 +70,13 @@
 .navbar-cta {
     flex-shrink: 0;
     white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    font-size: 0.78rem;
 }
 
 .mobile-menu-toggle {

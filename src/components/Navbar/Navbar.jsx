@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { GHL_BOOKING_URL } from '../../config/site'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -18,11 +19,19 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Platforms', path: '/platforms' },
-        { name: 'Capabilities', path: '/capabilities' },
-        { name: 'About Us', path: '/about' },
-        { name: 'Resources', path: '/resources' },
+        { name: 'About', path: '/about' },
+        { name: 'Services', path: '/services' },
+        { name: 'Industries', path: '/industries' },
+        { name: 'Government', path: '/government' },
+        { name: 'Case Studies', path: '/case-studies' },
+        { name: 'Founder', path: '/founder' },
+        { name: 'Contact', path: '/contact' },
     ]
+
+    const isActive = (path) => {
+        if (path === '/') return location.pathname === '/'
+        return location.pathname === path || location.pathname.startsWith(`${path}/`)
+    }
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -37,27 +46,30 @@ const Navbar = () => {
             <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
                 <div className="navbar-container container">
                     <Link to="/" className="navbar-logo">
-                        <img src="/image1i220-tps-200h.png" alt="Eny Consulting" />
+                        <img src="/image1i220-tps-200h.png" alt="ENY Consulting" />
                     </Link>
 
-                    {/* Desktop Navigation */}
                     <div className="navbar-links">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                                className={`nav-link ${isActive(link.path) ? 'active' : ''}`}
                             >
                                 {link.name}
                             </Link>
                         ))}
                     </div>
 
-                    <button className="btn btn-primary navbar-cta">
-                        Contact Us
-                    </button>
+                    <a
+                        href={GHL_BOOKING_URL}
+                        className="btn btn-primary navbar-cta"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Book a Call
+                    </a>
 
-                    {/* Mobile Menu Button */}
                     <button
                         className="mobile-menu-toggle"
                         onClick={toggleMobileMenu}
@@ -77,19 +89,14 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Mobile Sidebar */}
             <div className={`mobile-sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
-                <div className="sidebar-overlay" onClick={closeMobileMenu}></div>
+                <div className="sidebar-overlay" onClick={closeMobileMenu} role="presentation"></div>
                 <div className="sidebar-content">
                     <div className="sidebar-header">
                         <Link to="/" className="sidebar-logo" onClick={closeMobileMenu}>
-                            <img src="/image1i220-tps-200h.png" alt="Eny Consulting" />
+                            <img src="/image1i220-tps-200h.png" alt="ENY Consulting" />
                         </Link>
-                        <button
-                            className="sidebar-close"
-                            onClick={closeMobileMenu}
-                            aria-label="Close sidebar"
-                        >
+                        <button className="sidebar-close" onClick={closeMobileMenu} aria-label="Close sidebar">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                             </svg>
@@ -101,18 +108,30 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`sidebar-link ${location.pathname === link.path ? 'active' : ''}`}
+                                className={`sidebar-link ${isActive(link.path) ? 'active' : ''}`}
                                 onClick={closeMobileMenu}
                             >
                                 {link.name}
                             </Link>
                         ))}
+                        <Link to="/brands" className="sidebar-link" onClick={closeMobileMenu}>
+                            Our Brands
+                        </Link>
+                        <Link to="/media" className="sidebar-link" onClick={closeMobileMenu}>
+                            Media
+                        </Link>
                     </div>
 
                     <div className="sidebar-footer">
-                        <button className="btn btn-primary sidebar-cta" onClick={closeMobileMenu}>
-                            Contact Us
-                        </button>
+                        <a
+                            href={GHL_BOOKING_URL}
+                            className="btn btn-primary sidebar-cta"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={closeMobileMenu}
+                        >
+                            Book a Call
+                        </a>
                     </div>
                 </div>
             </div>
