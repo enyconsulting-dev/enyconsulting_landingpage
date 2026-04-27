@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageShell from '../components/PageShell'
+import ResourceOptInModal from '../components/ResourceOptInModal/ResourceOptInModal'
 import { GHL_BOOKING_URL } from '../config/site'
+import { sendResourceDownloadToWebhook } from '../services/webhookService'
 import './spec-pages.css'
 import './GovernmentPage.css'
 
@@ -39,10 +41,56 @@ const CAPABILITIES = [
 ]
 
 const GovernmentPage = () => {
+    const [modalState, setModalState] = useState({
+        isOpen: false,
+        resourceName: null,
+        downloadUrl: null,
+    })
+
     useEffect(() => {
         window.scrollTo(0, 0)
         document.title = 'Government Solutions | ENY Consulting'
     }, [])
+
+    const handleResourceDownload = (resourceName, downloadUrl) => {
+        setModalState({
+            isOpen: true,
+            resourceName,
+            downloadUrl,
+        })
+    }
+
+    const handleModalClose = () => {
+        setModalState({
+            isOpen: false,
+            resourceName: null,
+            downloadUrl: null,
+        })
+    }
+
+    const handleModalSubmit = async (formData) => {
+        // Send data to webhook
+        const success = await sendResourceDownloadToWebhook({
+            ...formData,
+            resourceName: modalState.resourceName,
+        })
+
+        if (success) {
+            // Trigger the download
+            const link = document.createElement('a')
+            link.href = modalState.downloadUrl
+            link.download = `${modalState.resourceName}.pdf`
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+
+            // Close modal
+            handleModalClose()
+            return true
+        }
+
+        return false
+    }
 
     return (
         <PageShell>
@@ -60,9 +108,12 @@ const GovernmentPage = () => {
                         <Link to="/contact" className="btn btn-primary">
                             Request a Capability Presentation
                         </Link>
-                        <Link to="/contact" className="btn btn-outline-light">
+                        <button 
+                            className="btn btn-outline-light"
+                            onClick={() => handleResourceDownload('Government Capabilities Brochure', '/ENY_Government_Capabilities_Brochure.pdf')}
+                        >
                             Download Government Capabilities Brochure
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -115,6 +166,45 @@ const GovernmentPage = () => {
                 </div>
             </section>
 
+            <section className="page-section-block gov-resources">
+                <div className="container">
+                    <header className="gov-section-header">
+                        <p className="gov-eyebrow">Downloadable Resources</p>
+                        <h2 className="gov-section-title">Toolkits & Resources for Government Leaders</h2>
+                    </header>
+                    <div className="gov-resources-grid">
+                        <article className="gov-resource-card">
+                            <h3>Government Capabilities Brochure</h3>
+                            <p>
+                                Comprehensive overview of ENY Consulting's government solutions, services, and proven expertise 
+                                in workforce development, digital transformation, and AI readiness. Perfect for sharing with 
+                                procurement, leadership, and decision-makers.
+                            </p>
+                            <button 
+                                className="btn btn-primary"
+                                onClick={() => handleResourceDownload('Government Capabilities Brochure', '/ENY_Government_Capabilities_Brochure.pdf')}
+                            >
+                                Download Brochure
+                            </button>
+                        </article>
+                        <article className="gov-resource-card">
+                            <h3>AI Readiness Assessment Toolkit</h3>
+                            <p>
+                                A practical framework for evaluating your institution's readiness for AI adoption. Includes 
+                                assessment tools, implementation roadmaps, and governance considerations for government agencies 
+                                planning AI initiatives.
+                            </p>
+                            <button 
+                                className="btn btn-primary"
+                                onClick={() => handleResourceDownload('AI Readiness Assessment Toolkit', '/ENY_AI_Readiness_Assessment_Toolkit.pdf')}
+                            >
+                                Download Toolkit
+                            </button>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
             <section className="page-section-block alt gov-final-cta">
                 <div className="container gov-final-inner">
                     <h2>Ready to Explore a Partnership?</h2>
@@ -127,15 +217,25 @@ const GovernmentPage = () => {
                         <Link to="/contact" className="btn btn-primary">
                             Request a Capability Presentation
                         </Link>
-                        <Link to="/contact" className="btn btn-secondary">
+                        <button 
+                            className="btn btn-secondary"
+                            onClick={() => handleResourceDownload('Government Capabilities Brochure', '/ENY_Government_Capabilities_Brochure.pdf')}
+                        >
                             Download Government Capabilities Brochure
-                        </Link>
+                        </button>
                         <a href={GHL_BOOKING_URL} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
                             Schedule a Partnership Discussion
                         </a>
                     </div>
                 </div>
             </section>
+
+            <ResourceOptInModal
+                isOpen={modalState.isOpen}
+                resourceName={modalState.resourceName}
+                onClose={handleModalClose}
+                onSubmit={handleModalSubmit}
+            />
         </PageShell>
     )
 }

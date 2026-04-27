@@ -1,18 +1,66 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageShell from '../components/PageShell'
+import ResourceOptInModal from '../components/ResourceOptInModal/ResourceOptInModal'
 import { GHL_BOOKING_URL } from '../config/site'
 import { SERVICES_FULL, SERVICES_HERO } from '../data/servicesCopy'
+import { sendResourceDownloadToWebhook } from '../services/webhookService'
 import './spec-pages.css'
 import './ServicesPage.css'
 
 const contactHref = (prefill) => `/contact${prefill ? `?topic=${encodeURIComponent(prefill)}` : ''}`
 
 const ServicesPage = () => {
+    const [modalState, setModalState] = useState({
+        isOpen: false,
+        resourceName: null,
+        downloadUrl: null,
+    })
+
     useEffect(() => {
         window.scrollTo(0, 0)
         document.title = 'Consulting Services | ENY Consulting'
     }, [])
+
+    const handleResourceDownload = (resourceName, downloadUrl) => {
+        setModalState({
+            isOpen: true,
+            resourceName,
+            downloadUrl,
+        })
+    }
+
+    const handleModalClose = () => {
+        setModalState({
+            isOpen: false,
+            resourceName: null,
+            downloadUrl: null,
+        })
+    }
+
+    const handleModalSubmit = async (formData) => {
+        // Send data to webhook
+        const success = await sendResourceDownloadToWebhook({
+            ...formData,
+            resourceName: modalState.resourceName,
+        })
+
+        if (success) {
+            // Trigger the download
+            const link = document.createElement('a')
+            link.href = modalState.downloadUrl
+            link.download = `${modalState.resourceName}.pdf`
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+
+            // Close modal
+            handleModalClose()
+            return true
+        }
+
+        return false
+    }
 
     return (
         <PageShell className="services-page">
@@ -75,18 +123,22 @@ const ServicesPage = () => {
                             Get a detailed overview of all our consulting services, methodologies, and engagement models.
                             Perfect for sharing with your leadership team or procurement department.
                         </p>
-                        <form className="lead-capture-form" onSubmit={(e) => e.preventDefault()}>
-                            <input type="email" placeholder="Your work email" required aria-label="Work email" />
-                            <button type="submit" className="btn btn-primary">
-                                Download Brochure
-                            </button>
-                        </form>
-                        <p className="lead-capture-note">
-                            Email capture → PDF via GHL. Tag as brochure-download for follow-up.
-                        </p>
+                        <button 
+                            className="btn btn-primary"
+                            onClick={() => handleResourceDownload('Services Brochure', '/ENY_Services_Brochure.pdf')}
+                        >
+                            Download Brochure
+                        </button>
                     </div>
                 </div>
             </section>
+
+            <ResourceOptInModal
+                isOpen={modalState.isOpen}
+                resourceName={modalState.resourceName}
+                onClose={handleModalClose}
+                onSubmit={handleModalSubmit}
+            />
         </PageShell>
     )
 }

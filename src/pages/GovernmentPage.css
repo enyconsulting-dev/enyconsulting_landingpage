@@ -176,3 +176,48 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Government Resources Section */
+.gov-resources {
+    background: var(--color-gray-50);
+}
+
+.gov-resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.gov-resource-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-gray-200);
+    transition: all 0.35s var(--ease-standard);
+    display: flex;
+    flex-direction: column;
+}
+
+.gov-resource-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-orchid);
+}
+
+.gov-resource-card h3 {
+    font-size: 1.15rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-blue);
+    margin-bottom: var(--spacing-md);
+}
+
+.gov-resource-card p {
+    font-size: 0.95rem;
+    color: var(--color-gray-600);
+    line-height: 1.75;
+    margin-bottom: var(--spacing-lg);
+    flex-grow: 1;
+}
+
+.gov-resource-card .btn {
+    align-self: flex-start;
+}

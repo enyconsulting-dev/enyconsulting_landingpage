@@ -199,3 +199,29 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Contact Form Message Alerts */
+.contact-message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.contact-message--success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.contact-message--error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.contact-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

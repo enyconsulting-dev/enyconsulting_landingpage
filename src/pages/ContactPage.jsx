@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import PageShell from '../components/PageShell'
+import { sendContactFormToWebhook } from '../services/webhookService'
 import './spec-pages.css'
 import './ContactPage.css'
 
@@ -17,13 +18,15 @@ const ContactPage = () => {
     const [searchParams] = useSearchParams()
 
     const [form, setForm] = useState({
-        firstName: '',
-        lastName: '',
+        fullName: '',
         email: '',
         phone: '',
         inquiryType: '',
         message: '',
     })
+
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitMessage, setSubmitMessage] = useState(null)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -45,9 +48,41 @@ const ContactPage = () => {
         setForm((prev) => ({ ...prev, [name]: value }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.info('Contact form', form)
+        setIsSubmitting(true)
+        setSubmitMessage(null)
+
+        try {
+            const success = await sendContactFormToWebhook(form)
+
+            if (success) {
+                setSubmitMessage({
+                    type: 'success',
+                    text: 'Thank you! Your message has been sent. We\'ll respond within 24 hours.',
+                })
+                // Reset form
+                setForm({
+                    fullName: '',
+                    email: '',
+                    phone: '',
+                    inquiryType: '',
+                    message: '',
+                })
+            } else {
+                setSubmitMessage({
+                    type: 'error',
+                    text: 'There was an issue sending your message. Please try again or contact us directly.',
+                })
+            }
+        } catch (error) {
+            setSubmitMessage({
+                type: 'error',
+                text: 'There was an issue sending your message. Please try again or contact us directly.',
+            })
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
@@ -66,33 +101,24 @@ const ContactPage = () => {
 
                     <div className="contact-grid">
                         <form className="contact-form" onSubmit={handleSubmit}>
-                            <div className="contact-form-row">
-                                <div className="form-group">
-                                    <label htmlFor="firstName">First Name</label>
-                                    <input
-                                        id="firstName"
-                                        name="firstName"
-                                        type="text"
-                                        autoComplete="given-name"
-                                        required
-                                        placeholder="Eno"
-                                        value={form.firstName}
-                                        onChange={handleChange}
-                                    />
+                            {submitMessage && (
+                                <div className={`contact-message contact-message--${submitMessage.type}`}>
+                                    {submitMessage.text}
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="lastName">Last Name</label>
-                                    <input
-                                        id="lastName"
-                                        name="lastName"
-                                        type="text"
-                                        autoComplete="family-name"
-                                        required
-                                        placeholder="Eka"
-                                        value={form.lastName}
-                                        onChange={handleChange}
-                                    />
-                                </div>
+                            )}
+
+                            <div className="form-group">
+                                <label htmlFor="fullName">Full Name</label>
+                                <input
+                                    id="fullName"
+                                    name="fullName"
+                                    type="text"
+                                    autoComplete="name"
+                                    required
+                                    placeholder="Your full name"
+                                    value={form.fullName}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="email">Work Email</label>
@@ -149,12 +175,12 @@ const ContactPage = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <button type="submit" className="btn btn-primary contact-submit">
-                                Send Message
+                            <button type="submit" className="btn btn-primary contact-submit" disabled={isSubmitting}>
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
                             </button>
                             <p className="contact-form-micro">We respond to all inquiries within 24 business hours.</p>
                             <p className="contact-form-note">
-                                Routes to GoHighLevel by inquiry type — configure API / webhook in production.
+                                Your information is sent securely to our CRM system for processing.
                             </p>
                         </form>
 
