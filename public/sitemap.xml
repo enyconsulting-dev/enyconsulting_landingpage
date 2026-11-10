@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://review-ejai8u.teleporthq.app</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://enyconsulting.ca/</loc>
   </url>
   <url>
-    <loc>https://review-ejai8u.teleporthq.app/404-not-found</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://enyconsulting.ca/about</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/services</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/industries</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/government</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/case-studies</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/founder</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/brands</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/media</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/contact</loc>
+  </url>
+  <url>
+    <loc>https://enyconsulting.ca/careers</loc>
   </url>
 </urlset>
