@@ -2,7 +2,7 @@
  * Webhook Service — Send form data to GoHighLevel
  */
 
-const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/Qum6zwDsfvHsbXiehFQR/webhook-trigger/14RPfHTryn7zig9j9LWq'
+const SUBMISSION_URL = '/api/submit-form'
 
 export const sendContactFormToWebhook = async (formData) => {
     try {
@@ -16,9 +16,10 @@ export const sendContactFormToWebhook = async (formData) => {
             type: 'contact',
             tag: formData.inquiryType, // The inquiry type serves as the tag
             submittedAt: new Date().toISOString(),
+            turnstileToken: formData.turnstileToken,
         }
 
-        const response = await fetch(WEBHOOK_URL, {
+        const response = await fetch(SUBMISSION_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,9 +49,10 @@ export const sendResourceDownloadToWebhook = async (downloadData) => {
             type: 'resource',
             tag: downloadData.resourceName, // The resource name serves as the tag
             submittedAt: new Date().toISOString(),
+            turnstileToken: downloadData.turnstileToken,
         }
 
-        const response = await fetch(WEBHOOK_URL, {
+        const response = await fetch(SUBMISSION_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

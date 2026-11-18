@@ -5,9 +5,10 @@
   "type": "module",
   "packageManager": "pnpm@10.34.9",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/prerender-meta.js",
-    "preview": "vite preview"
+    "dev": "node init && vite",
+    "build": "node init && vite build && node scripts/prerender-meta.js",
+    "preview": "vite preview",
+    "test": "node --test tests/submit-form.test.js"
   },
   "dependencies": {
     "react": "^18.3.1",
