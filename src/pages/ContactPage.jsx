@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import PageShell from '../components/PageShell'
+import TurnstileWidget from '../components/TurnstileWidget'
 import { sendContactFormToWebhook } from '../services/webhookService'
 import './spec-pages.css'
 import './ContactPage.css'
@@ -27,6 +28,8 @@ const ContactPage = () => {
 
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitMessage, setSubmitMessage] = useState(null)
+    const [turnstileToken, setTurnstileToken] = useState('')
+    const [turnstileResetSignal, setTurnstileResetSignal] = useState(0)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -50,11 +53,12 @@ const ContactPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!turnstileToken) return
         setIsSubmitting(true)
         setSubmitMessage(null)
 
         try {
-            const success = await sendContactFormToWebhook(form)
+            const success = await sendContactFormToWebhook({ ...form, turnstileToken })
 
             if (success) {
                 setSubmitMessage({
@@ -82,6 +86,8 @@ const ContactPage = () => {
             })
         } finally {
             setIsSubmitting(false)
+            setTurnstileToken('')
+            setTurnstileResetSignal((signal) => signal + 1)
         }
     }
 
@@ -175,7 +181,16 @@ const ContactPage = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <button type="submit" className="btn btn-primary contact-submit" disabled={isSubmitting}>
+                            <TurnstileWidget
+                                action="contact"
+                                onTokenChange={setTurnstileToken}
+                                resetSignal={turnstileResetSignal}
+                            />
+                            <button
+                                type="submit"
+                                className="btn btn-primary contact-submit"
+                                disabled={isSubmitting || !turnstileToken}
+                            >
                                 {isSubmitting ? 'Sending...' : 'Send Message'}
                             </button>
                             <p className="contact-form-micro">We respond to all inquiries within 24 business hours.</p>

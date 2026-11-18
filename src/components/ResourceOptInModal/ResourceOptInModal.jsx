@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import TurnstileWidget from '../TurnstileWidget'
 import './ResourceOptInModal.css'
 
 const ResourceOptInModal = ({ isOpen, resourceName, onClose, onSubmit }) => {
@@ -9,6 +10,8 @@ const ResourceOptInModal = ({ isOpen, resourceName, onClose, onSubmit }) => {
     })
 
     const [isLoading, setIsLoading] = useState(false)
+    const [turnstileToken, setTurnstileToken] = useState('')
+    const [turnstileResetSignal, setTurnstileResetSignal] = useState(0)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -17,18 +20,22 @@ const ResourceOptInModal = ({ isOpen, resourceName, onClose, onSubmit }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!turnstileToken) return
         setIsLoading(true)
 
-        // Call the parent's onSubmit with form data
-        const success = await onSubmit(form)
+        try {
+            const success = await onSubmit({ ...form, turnstileToken })
 
-        if (success) {
-            // Reset and close
-            setForm({ fullName: '', email: '', phone: '' })
-            onClose()
+            if (success) {
+                setForm({ fullName: '', email: '', phone: '' })
+                onClose()
+                return
+            }
+        } finally {
+            setIsLoading(false)
+            setTurnstileToken('')
+            setTurnstileResetSignal((signal) => signal + 1)
         }
-
-        setIsLoading(false)
     }
 
     if (!isOpen) return null
@@ -88,7 +95,12 @@ const ResourceOptInModal = ({ isOpen, resourceName, onClose, onSubmit }) => {
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-primary" disabled={isLoading}>
+                    <TurnstileWidget
+                        action="resource"
+                        onTokenChange={setTurnstileToken}
+                        resetSignal={turnstileResetSignal}
+                    />
+                    <button type="submit" className="btn btn-primary" disabled={isLoading || !turnstileToken}>
                         {isLoading ? 'Processing...' : 'Download Resource'}
                     </button>
                 </form>

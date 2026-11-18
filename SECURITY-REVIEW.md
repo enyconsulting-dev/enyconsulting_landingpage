@@ -5,13 +5,13 @@
 
 ## Summary
 
-One medium-severity issue was identified: the browser sends form submissions directly to a public CRM webhook. The remaining items are hardening opportunities or conditional risks, not confirmed exploitable vulnerabilities. No critical or high-severity issue was confirmed.
+One medium-severity issue was identified in the original implementation: the browser sent form submissions directly to a public CRM webhook. A same-origin serverless proxy and server-side Turnstile verification have since been added. Production mitigation is incomplete until the Turnstile site and secret keys are configured in Vercel. The remaining items are hardening opportunities or conditional risks, not confirmed exploitable vulnerabilities. No critical or high-severity issue was confirmed.
 
 ## Findings
 
 | # | Severity | File | Lines | Finding and recommended action |
 |---|----------|------|-------|--------------------------------|
-| 1 | 🟡 MEDIUM | [`src/services/webhookService.js`](src/services/webhookService.js) | 5, 21, 53 | Contact and resource-opt-in data is sent directly from the browser to a public GoHighLevel webhook. Visitors can submit fabricated or replayed requests, potentially creating CRM records or triggering downstream automations. Proxy submissions through a backend/serverless endpoint; keep webhook details server-side, validate fields and origin, and add bot/abuse controls. |
+| 1 | 🟡 MEDIUM | [`src/services/webhookService.js`](src/services/webhookService.js), [`api/submit-form.js`](api/submit-form.js) | — | **Mitigation implemented; deployment configuration required.** Forms now submit to a same-origin function, which validates fields and origin, verifies Turnstile tokens server-side, and forwards the existing payload to the existing GoHighLevel webhook. Configure `VITE_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` in Vercel before production use; the function rejects submissions if the secret is missing. |
 | 2 | ⚪ LOW | [`vercel.json`](vercel.json) | — | Security response headers are not configured. Add a suitable Content Security Policy, HSTS, frame protection, `X-Content-Type-Options`, Referrer Policy, and Permissions Policy. |
 | 3 | ⚪ LOW | [`public/index.html`](public/index.html) | — | CSS and font assets load from third parties without Subresource Integrity. Vendor these assets locally or pin them and use verified integrity hashes where supported. |
 | 4 | ⚪ LOW | [`vite.config.js`](vite.config.js) | 16 | Production sourcemaps may expose source if deployed publicly. Disable public sourcemaps or upload them only to a private error-reporting service. |
