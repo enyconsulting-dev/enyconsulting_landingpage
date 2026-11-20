@@ -1,0 +1,31 @@
+# ENY Consulting
+
+> ENY Consulting is a global business technology and consulting firm supporting organizations with digital transformation, AI strategy, business analysis, change management, and workforce development.
+
+ENY Consulting serves organizations and professionals in Canada, the United States, Nigeria, and Ghana. Its headquarters are in Calgary, Alberta, Canada.
+
+## Key pages
+
+- [Home](https://enyconsulting.ca/): Company overview and featured work.
+- [About ENY Consulting](https://enyconsulting.ca/about): Company background, mission, and expertise.
+- [Consulting services](https://enyconsulting.ca/services): Digital transformation, AI strategy, business analysis, change management, and training.
+- [Industries](https://enyconsulting.ca/industries): Sectors served by ENY Consulting.
+- [Government solutions](https://enyconsulting.ca/government): Government workforce development, AI readiness, and digital transformation.
+- [Case studies](https://enyconsulting.ca/case-studies): Selected consulting projects and outcomes.
+- [Founder](https://enyconsulting.ca/founder): Information about ENY Consulting founder Eno Eka.
+- [Contact](https://enyconsulting.ca/contact): Inquiries about consulting, partnerships, training, speaking, and media.
+
+## Company and contact
+
+- Company: ENY Consulting Inc.
+- Website: https://enyconsulting.ca/
+- Email: info@enyconsulting.ca
+- Phone: +1-587-328-8469
+- Founder: https://enoeka.com/
+- LinkedIn: https://linkedin.com/company/enyconsultinginc
+- Instagram: https://instagram.com/enyconsulting
+
+## Discovery
+
+- [XML sitemap](https://enyconsulting.ca/sitemap.xml)
+- [Crawler access policy](https://enyconsulting.ca/robots.txt)
