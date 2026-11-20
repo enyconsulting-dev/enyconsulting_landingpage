@@ -13,7 +13,7 @@ import MediaPage from './pages/MediaPage'
 import ContactPage from './pages/ContactPage'
 import CareersPage from './pages/CareersPage'
 import { SITE_NAME } from './config/site'
-import { PAGE_METADATA } from './config/pageMetadata'
+import { PAGE_METADATA, SITE_URL } from './config/pageMetadata'
 
 function updateMetaTag(selector, attribute, key, content) {
     let element = document.head.querySelector(selector)
@@ -46,7 +46,7 @@ function App() {
         const title = metadata?.title ?? `Page Not Found | ${SITE_NAME}`
         const description =
             metadata?.description ?? 'The requested page could not be found on the ENY Consulting website.'
-        const canonicalUrl = `${window.location.origin}${normalizedPath}`
+        const canonicalUrl = `${SITE_URL}${normalizedPath}`
 
         document.title = title
         updateMetaTag('meta[name="description"]', 'name', 'description', description)
@@ -61,7 +61,15 @@ function App() {
         updateMetaTag('meta[property="og:title"]', 'property', 'og:title', title)
         updateMetaTag('meta[property="og:description"]', 'property', 'og:description', description)
         updateMetaTag('meta[property="og:url"]', 'property', 'og:url', canonicalUrl)
-        updateMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary')
+        updateMetaTag('meta[property="og:image"]', 'property', 'og:image', `${SITE_URL}/Eno.jpg`)
+        updateMetaTag(
+            'meta[property="og:image:alt"]',
+            'property',
+            'og:image:alt',
+            'Eno Eka, CEO and Founder of ENY Consulting',
+        )
+        updateMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image')
+        updateMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', `${SITE_URL}/Eno.jpg`)
         updateMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', title)
         updateMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', description)
 

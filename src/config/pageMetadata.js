@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://enyconsulting.ca'
+
 export const PAGE_METADATA = {
     '/': {
         title: 'ENY Consulting | Global Business Technology & Digital Transformation',
