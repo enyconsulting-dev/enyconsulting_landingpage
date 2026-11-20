@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GHL_BOOKING_URL } from '../../config/site'
+import { GHL_BOOKING_TARGET, GHL_BOOKING_URL } from '../../config/site'
 import './HomeSections.css'
 
 const Arrow = () => (
@@ -22,6 +23,85 @@ export const AsFeaturedBar = () => (
         </div>
     </section>
 )
+
+const AWARD_IMAGES = [
+    {
+        src: '/awards/IMG_7581.webp',
+        alt: 'Eno Eka featured in Canada’s Most Powerful Women: Top 100',
+        caption: 'Canada’s Most Powerful Women: Top 100',
+    },
+    {
+        src: '/awards/IMG_8686.webp',
+        alt: 'RBC Canadian Women Entrepreneur Awards, Women of Influence 2020 recipient graphic',
+        caption: 'RBC Women of Influence — 2020 recipient',
+    },
+    {
+        src: '/awards/IMG_3274.webp',
+        alt: 'Eno Eka named a Top 75 finalist in the RBC Top 25 Canadian Immigrant Awards',
+        caption: 'RBC Top 25 Canadian Immigrant Awards — Top 75 finalist',
+    },
+    {
+        src: '/awards/IMG_3277.webp',
+        alt: 'IIBA article naming Eno Eka among 8 Women to Watch in 2021',
+        caption: 'IIBA 8 Women to Watch — 2021',
+    },
+]
+
+export const AwardsSlider = () => {
+    const [isPaused, setIsPaused] = useState(false)
+
+    const renderAwards = (isDuplicate = false) => (
+        <ul className="awards-slider-group" aria-hidden={isDuplicate || undefined}>
+            {AWARD_IMAGES.map((award) => (
+                <li className="awards-slider-card" key={award.src}>
+                    <img src={award.src} alt={isDuplicate ? '' : award.alt} loading="lazy" decoding="async" />
+                    {!isDuplicate && <p>{award.caption}</p>}
+                </li>
+            ))}
+        </ul>
+    )
+
+    return (
+        <section className="section awards-section" aria-labelledby="awards-title">
+            <div className="container">
+                <div className="awards-section-heading">
+                    <div>
+                        <p className="section-eyebrow">Awards &amp; Recognition</p>
+                        <h2 id="awards-title" className="section-title-display">
+                            Recognized for Leadership and Impact
+                        </h2>
+                        <ul className="awards-highlights">
+                            <li>Canadian Choice Award — 2025</li>
+                            <li>Canadian Choice Award — 2026</li>
+                            <li>Canada’s Top 100 Most Powerful Women</li>
+                            <li>RBC Women of Influence</li>
+                        </ul>
+                    </div>
+                    <button
+                        type="button"
+                        className="awards-slider-toggle"
+                        aria-label={isPaused ? 'Resume award image carousel' : 'Pause award image carousel'}
+                        aria-pressed={isPaused}
+                        onClick={() => setIsPaused((paused) => !paused)}
+                    >
+                        {isPaused ? 'Resume' : 'Pause'}
+                    </button>
+                </div>
+                <div
+                    className="awards-slider"
+                    role="region"
+                    aria-label="Award and recognition images"
+                    style={{ '--awards-play-state': isPaused ? 'paused' : 'running' }}
+                >
+                    <div className="awards-slider-track">
+                        {renderAwards()}
+                        {renderAwards(true)}
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
 
 const IconChart = () => (
     <svg className="what-we-do-icon" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -411,7 +491,12 @@ export const HomeCtaBanner = () => (
                 Schedule a discovery call with our consulting team. No commitment. No pitch. Just a strategic conversation
                 about where your business is, where it could be, and what it would take to get there.
             </p>
-            <a href={GHL_BOOKING_URL} className="btn home-cta-btn" target="_blank" rel="noopener noreferrer">
+            <a
+                href={GHL_BOOKING_URL}
+                className="btn home-cta-btn"
+                target={GHL_BOOKING_TARGET}
+                rel={GHL_BOOKING_TARGET ? 'noopener noreferrer' : undefined}
+            >
                 Book Your Discovery Call <Arrow />
             </a>
         </div>

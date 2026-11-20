@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PageShell from '../components/PageShell'
-import { GHL_BOOKING_URL } from '../config/site'
+import { GHL_BOOKING_TARGET, GHL_BOOKING_URL } from '../config/site'
 import './spec-pages.css'
 import './AboutUsPage.css'
 
@@ -156,7 +156,12 @@ const AboutUsPage = () => {
                         ))}
                     </div>
                     <div className="about-cta-row">
-                        <a href={GHL_BOOKING_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <a
+                            href={GHL_BOOKING_URL}
+                            className="btn btn-primary"
+                            target={GHL_BOOKING_TARGET}
+                            rel={GHL_BOOKING_TARGET ? 'noopener noreferrer' : undefined}
+                        >
                             Work With an Award-Winning Team — Book a Discovery Call
                         </a>
                     </div>

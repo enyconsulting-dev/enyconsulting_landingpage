@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageShell from '../components/PageShell'
 import ResourceOptInModal from '../components/ResourceOptInModal/ResourceOptInModal'
-import { GHL_BOOKING_URL } from '../config/site'
+import { GHL_BOOKING_TARGET, GHL_BOOKING_URL } from '../config/site'
 import { sendResourceDownloadToWebhook } from '../services/webhookService'
 import './spec-pages.css'
 import './GovernmentPage.css'
@@ -223,7 +223,12 @@ const GovernmentPage = () => {
                         >
                             Download Government Capabilities Brochure
                         </button>
-                        <a href={GHL_BOOKING_URL} className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                        <a
+                            href={GHL_BOOKING_URL}
+                            className="btn btn-ghost"
+                            target={GHL_BOOKING_TARGET}
+                            rel={GHL_BOOKING_TARGET ? 'noopener noreferrer' : undefined}
+                        >
                             Schedule a Partnership Discussion
                         </a>
                     </div>

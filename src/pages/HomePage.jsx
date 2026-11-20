@@ -5,6 +5,7 @@ import HomeHero from '../components/home/HomeHero'
 import StatsBar from '../components/home/StatsBar'
 import {
     AsFeaturedBar,
+    AwardsSlider,
     WhatWeDoSection,
     IndustriesPreview,
     FounderSpotlight,
@@ -30,6 +31,7 @@ const HomePage = () => {
                 <HomeHero />
                 <StatsBar />
                 <AsFeaturedBar />
+                <AwardsSlider />
                 <WhatWeDoSection />
                 <IndustriesPreview />
                 <FounderSpotlight />

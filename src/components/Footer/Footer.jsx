@@ -108,17 +108,6 @@ const Footer = () => {
                         <span className="footer-copy">
                             &copy; {new Date().getFullYear()} ENY Consulting Inc. All rights reserved.
                         </span>
-                        <a href="#privacy" className="footer-legal-link">
-                            Privacy Policy
-                        </a>
-                        <span className="footer-legal-sep">·</span>
-                        <a href="#terms" className="footer-legal-link">
-                            Terms of Service
-                        </a>
-                        <span className="footer-legal-sep">·</span>
-                        <a href="#cookies" className="footer-legal-link">
-                            Cookie Policy
-                        </a>
                     </div>
                 </div>
             </div>
