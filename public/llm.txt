@@ -1,0 +1,5 @@
+# ENY Consulting
+
+For the AI-readable company overview, key pages, and contact information, see:
+
+- [llms.txt](https://enyconsulting.ca/llms.txt)

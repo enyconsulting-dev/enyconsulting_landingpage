@@ -1,7 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
-import { PAGE_METADATA } from '../src/config/pageMetadata.js'
+import { PAGE_METADATA, SITE_URL } from '../src/config/pageMetadata.js'
 
-const siteOrigin = 'https://enyconsulting.ca'
 const template = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8')
 const outputDirectory = new URL('../dist/pages/', import.meta.url)
 
@@ -10,7 +9,7 @@ await mkdir(outputDirectory, { recursive: true })
 for (const [pathname, metadata] of Object.entries(PAGE_METADATA)) {
     if (pathname === '/') continue
 
-    const canonicalUrl = `${siteOrigin}${pathname}`
+    const canonicalUrl = `${SITE_URL}${pathname}`
     const escapedTitle = metadata.title.replaceAll('&', '&amp;')
     const escapedDescription = metadata.description
         .replaceAll('&', '&amp;')
