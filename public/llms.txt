@@ -8,7 +8,7 @@ ENY Consulting serves organizations and professionals in Canada, the United Stat
 
 - [Home](https://enyconsulting.ca/): Company overview and featured work.
 - [About ENY Consulting](https://enyconsulting.ca/about): Company background, mission, and expertise.
-- [Consulting services](https://enyconsulting.ca/services): Digital transformation, AI strategy, business analysis, change management, and training.
+- [Consulting services](https://enyconsulting.ca/services): Business and technology consulting, recruitment and placement, coaching and training, and certifications.
 - [Industries](https://enyconsulting.ca/industries): Sectors served by ENY Consulting.
 - [Government solutions](https://enyconsulting.ca/government): Government workforce development, AI readiness, and digital transformation.
 - [Case studies](https://enyconsulting.ca/case-studies): Selected consulting projects and outcomes.

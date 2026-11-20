@@ -67,9 +67,7 @@ const ServicesPage = () => {
             <section className="page-hero-spec">
                 <div className="page-hero-inner">
                     <p className="page-hero-eyebrow">{SERVICES_HERO.eyebrow}</p>
-                    <h1>
-                        Strategic Consulting That Drives <em>Revenue, Efficiency, and Growth</em>
-                    </h1>
+                    <h1>{SERVICES_HERO.h1}</h1>
                     <p className="page-hero-sub">{SERVICES_HERO.body}</p>
                 </div>
             </section>
@@ -80,12 +78,16 @@ const ServicesPage = () => {
                         <article key={s.id} id={s.id} className="service-detail-card">
                             <h2 className="service-detail-title">{s.title}</h2>
                             <p className="service-detail-body">{s.body}</p>
-                            <h3 className="service-detail-subhead">What&apos;s Included</h3>
-                            <ul className="service-detail-items">
-                                {s.included.map((item) => (
-                                    <li key={item}>{item}</li>
-                                ))}
-                            </ul>
+                            {s.included?.length ? (
+                                <>
+                                    <h3 className="service-detail-subhead">{s.includedTitle}</h3>
+                                    <ul className="service-detail-items">
+                                        {s.included.map((item) => (
+                                            <li key={item}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </>
+                            ) : null}
                             {s.extraBody ? <p className="service-detail-body service-detail-extra">{s.extraBody}</p> : null}
                             {s.caseReference ? (
                                 <p className="service-case-ref">
