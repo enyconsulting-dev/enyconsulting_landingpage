@@ -13,7 +13,6 @@ dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
@@ -26,3 +25,4 @@ SECURITY-REVIEW.md
 
 SECURITY-REVIEW.md
 todo.md 
+config.bat

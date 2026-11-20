@@ -12,9 +12,9 @@ export const PAGE_METADATA = {
             'Learn about ENY Consulting, our mission, values, global work, and the business technology consulting services we provide.',
     },
     '/services': {
-        title: 'Consulting Services | ENY Consulting',
+        title: 'ENY Consulting Services | Training & Recruitment',
         description:
-            'Explore ENY Consulting services in digital transformation, AI strategy, business analysis, change management, and corporate training.',
+            'ENY Consulting provides business and technology consulting, recruitment and placement, coaching and training, and professional certifications.',
     },
     '/industries': {
         title: 'Industries We Serve | ENY Consulting',
