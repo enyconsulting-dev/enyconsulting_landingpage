@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { GHL_BOOKING_URL } from '../../config/site'
+import { GHL_BOOKING_TARGET, GHL_BOOKING_URL } from '../../config/site'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -64,8 +64,8 @@ const Navbar = () => {
                     <a
                         href={GHL_BOOKING_URL}
                         className="btn btn-primary navbar-cta"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        target={GHL_BOOKING_TARGET}
+                        rel={GHL_BOOKING_TARGET ? 'noopener noreferrer' : undefined}
                     >
                         Book a Call
                     </a>
@@ -126,8 +126,8 @@ const Navbar = () => {
                         <a
                             href={GHL_BOOKING_URL}
                             className="btn btn-primary sidebar-cta"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target={GHL_BOOKING_TARGET}
+                            rel={GHL_BOOKING_TARGET ? 'noopener noreferrer' : undefined}
                             onClick={closeMobileMenu}
                         >
                             Book a Call

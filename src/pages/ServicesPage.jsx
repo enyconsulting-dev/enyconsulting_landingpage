@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageShell from '../components/PageShell'
 import ResourceOptInModal from '../components/ResourceOptInModal/ResourceOptInModal'
-import { GHL_BOOKING_URL } from '../config/site'
+import { GHL_BOOKING_TARGET, GHL_BOOKING_URL } from '../config/site'
 import { SERVICES_FULL, SERVICES_HERO } from '../data/servicesCopy'
 import { sendResourceDownloadToWebhook } from '../services/webhookService'
 import './spec-pages.css'
@@ -109,7 +109,12 @@ const ServicesPage = () => {
                         you&apos;re facing, ask the right questions, and recommend the approach that makes the most sense
                         for your business. No pitch. No pressure. Just strategy.
                     </p>
-                    <a href={GHL_BOOKING_URL} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href={GHL_BOOKING_URL}
+                        className="btn btn-primary"
+                        target={GHL_BOOKING_TARGET}
+                        rel={GHL_BOOKING_TARGET ? 'noopener noreferrer' : undefined}
+                    >
                         Book a Free Discovery Call
                     </a>
                 </div>

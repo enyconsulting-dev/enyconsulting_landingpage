@@ -61,15 +61,15 @@ function App() {
         updateMetaTag('meta[property="og:title"]', 'property', 'og:title', title)
         updateMetaTag('meta[property="og:description"]', 'property', 'og:description', description)
         updateMetaTag('meta[property="og:url"]', 'property', 'og:url', canonicalUrl)
-        updateMetaTag('meta[property="og:image"]', 'property', 'og:image', `${SITE_URL}/Eno.jpg`)
+        updateMetaTag('meta[property="og:image"]', 'property', 'og:image', `${SITE_URL}/og-image.png`)
         updateMetaTag(
             'meta[property="og:image:alt"]',
             'property',
             'og:image:alt',
-            'Eno Eka, CEO and Founder of ENY Consulting',
+            'ENY Consulting',
         )
         updateMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image')
-        updateMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', `${SITE_URL}/Eno.jpg`)
+        updateMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', `${SITE_URL}/og-image.png`)
         updateMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', title)
         updateMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', description)
 
@@ -97,7 +97,6 @@ function App() {
                 <Route path="/media" element={<MediaPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/careers" element={<CareersPage />} />
-
                 <Route path="/capabilities" element={<Navigate to="/services" replace />} />
                 <Route path="/resources" element={<Navigate to="/media" replace />} />
                 <Route path="/platforms" element={<Navigate to="/brands" replace />} />

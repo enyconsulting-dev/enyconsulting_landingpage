@@ -86,6 +86,115 @@
     color: var(--color-orchid);
 }
 
+/* Awards carousel */
+.awards-section {
+    background: var(--color-white);
+    overflow: hidden;
+}
+
+.awards-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.awards-section-heading .section-title-display {
+    margin-bottom: var(--spacing-md);
+}
+
+.awards-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    list-style: none;
+}
+
+.awards-highlights li {
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-full);
+    color: var(--color-gray-800);
+    font-size: var(--font-size-sm);
+    padding: 0.45rem 0.85rem;
+}
+
+.awards-slider-toggle {
+    flex: 0 0 auto;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-full);
+    color: var(--color-blue);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    padding: 0.55rem 1rem;
+}
+
+.awards-slider-toggle:hover {
+    border-color: var(--color-orchid);
+    color: var(--color-orchid);
+}
+
+.awards-slider {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.awards-slider-track {
+    display: flex;
+    width: max-content;
+    animation: awards-scroll 48s linear infinite;
+    animation-play-state: var(--awards-play-state, running);
+}
+
+.awards-slider:hover .awards-slider-track,
+.awards-slider:focus-within .awards-slider-track {
+    animation-play-state: paused;
+}
+
+.awards-slider-group {
+    display: flex;
+    flex: 0 0 auto;
+    gap: var(--spacing-lg);
+    list-style: none;
+    padding-right: var(--spacing-lg);
+}
+
+.awards-slider-card {
+    display: flex;
+    flex: 0 0 270px;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.awards-slider-card img {
+    width: 100%;
+    height: 190px;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    background: var(--color-gray-100);
+    object-fit: contain;
+}
+
+.awards-slider-card p {
+    color: var(--color-gray-600);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    margin: 0;
+}
+
+@keyframes awards-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .awards-slider-track {
+        animation: none;
+        transform: none;
+    }
+}
+
 /* What we do */
 .what-we-do-grid {
     display: grid;

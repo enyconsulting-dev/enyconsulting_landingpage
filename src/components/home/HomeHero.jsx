@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { GHL_BOOKING_URL } from '../../config/site'
+import { GHL_BOOKING_TARGET, GHL_BOOKING_URL } from '../../config/site'
 import './HomeHero.css'
 
 const ArrowIcon = () => (
@@ -25,7 +25,12 @@ const HomeHero = () => {
                     transformation, implement AI strategy, and build high-performing teams.
                 </p>
                 <div className="home-hero-ctas">
-                    <a href={GHL_BOOKING_URL} className="btn btn-primary home-hero-btn-primary" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href={GHL_BOOKING_URL}
+                        className="btn btn-primary home-hero-btn-primary"
+                        target={GHL_BOOKING_TARGET}
+                        rel={GHL_BOOKING_TARGET ? 'noopener noreferrer' : undefined}
+                    >
                         Book a Discovery Call <ArrowIcon />
                     </a>
                     <Link to="/services" className="btn btn-outline home-hero-btn-secondary">
