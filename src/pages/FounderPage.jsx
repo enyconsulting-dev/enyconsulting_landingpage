@@ -45,9 +45,9 @@ const FounderPage = () => {
         <PageShell>
             <section className="page-hero-spec founder-hero">
                 <div className="page-hero-inner founder-hero-inner">
-                    <p className="page-obed-eno">Meet the Founder</p>
+                    <p className="page-hero-eyebrow">Meet the Founder</p>
                     <h1>Eno Eka</h1>
-                    <p className="founder-hero-sub">
+                    <p className="page-obed-eno">
                         CEO, ENY Consulting Inc. · Founder, Business Analysis School · Global Business Consultant · Digital
                         Transformation Strategist · International Keynote Speaker
                     </p>
