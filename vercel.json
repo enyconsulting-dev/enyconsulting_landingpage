@@ -17,6 +17,10 @@
       "destination": "/pages/government.html"
     },
     {
+      "source": "/case-studies/",
+      "destination": "/pages/case-studies.html"
+    },
+    {
       "source": "/case-studies",
       "destination": "/pages/case-studies.html"
     },

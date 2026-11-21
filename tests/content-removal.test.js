@@ -45,3 +45,18 @@ test('University of Manitoba case study remains available', async () => {
     const caseStudies = await readFile(path.resolve('src/pages/CaseStudiesPage.jsx'), 'utf8')
     assert.match(caseStudies, /University of Manitoba/)
 })
+
+test('case studies route with or without a trailing slash serves the case studies page', async () => {
+    const { rewrites } = JSON.parse(await readFile(path.resolve('vercel.json'), 'utf8'))
+    const expectedRoutes = ['/case-studies', '/case-studies/']
+
+    for (const route of expectedRoutes) {
+        assert.ok(
+            rewrites.some(
+                ({ source, destination }) =>
+                    source === route && destination === '/pages/case-studies.html',
+            ),
+            `${route} must rewrite to the prerendered case studies page`,
+        )
+    }
+})
