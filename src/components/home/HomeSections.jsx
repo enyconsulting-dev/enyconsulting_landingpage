@@ -353,19 +353,6 @@ export const CaseStudiesPreview = () => (
                     </p>
                 </article>
                 <article className="case-preview-card">
-                    <span className="case-preview-tag">Government / Education</span>
-                    <h3>Lagos State Ministry AI Workforce Development</h3>
-                    <p>
-                        Selected by the Lagos State Ministry of Tertiary Education to design and deliver an AI and digital
-                        skills workforce development initiative targeting tertiary institutions across Lagos State. The
-                        engagement includes AI curriculum design, instructor capacity building, and student-facing
-                        workshops preparing the next generation for an AI-driven economy.
-                    </p>
-                    <p className="case-preview-stat">
-                        State-level partnership &nbsp;|&nbsp; AI curriculum design &nbsp;|&nbsp; Tertiary institution reach
-                    </p>
-                </article>
-                <article className="case-preview-card">
                     <span className="case-preview-tag">Professional Development</span>
                     <h3>Building the World&apos;s Largest BA Training Ecosystem</h3>
                     <p>

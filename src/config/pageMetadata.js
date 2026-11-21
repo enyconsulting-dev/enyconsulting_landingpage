@@ -29,7 +29,7 @@ export const PAGE_METADATA = {
     '/case-studies': {
         title: 'Case Studies | ENY Consulting',
         description:
-            'Review ENY Consulting project case studies covering financial services transformation, government workforce development, and professional education.',
+            'Review ENY Consulting project case studies covering financial services transformation, professional education, and higher education.',
     },
     '/founder': {
         title: 'Eno Eka | CEO ENY Consulting | Global Business Consultant & Speaker',

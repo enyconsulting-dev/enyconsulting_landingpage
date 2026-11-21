@@ -123,24 +123,6 @@
     margin-bottom: var(--spacing-md);
 }
 
-.gov-lagos {
-    max-width: 900px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, rgba(150, 8, 142, 0.12), rgba(7, 59, 106, 0.1));
-    border: 1px solid rgba(150, 8, 142, 0.25);
-    padding: var(--spacing-xl);
-    border-radius: 16px;
-}
-
-.gov-lagos h3 {
-    color: var(--color-orchid);
-}
-
-.gov-lagos p {
-    color: var(--color-gray-700);
-    line-height: 1.75;
-}
-
 .gov-final-cta {
     text-align: center;
 }

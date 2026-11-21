@@ -150,19 +150,6 @@ const GovernmentPage = () => {
                             </article>
                         ))}
                     </div>
-                    <article className="gov-cap-card gov-cap-card--highlight gov-lagos">
-                        <p className="section-eyebrow">Current Partnership</p>
-                        <h3>Lagos State Ministry of Tertiary Education</h3>
-                        <p>
-                            ENY Consulting was selected to partner with the Lagos State Ministry of Tertiary Education on
-                            a pioneering AI and digital skills workforce development initiative. The engagement includes
-                            designing AI-integrated curricula for tertiary institutions, training instructors on AI
-                            pedagogical approaches, and delivering student-facing workshops that prepare Lagos&apos;s next
-                            generation for an AI-driven economy. This partnership reflects our commitment to building
-                            institutional capacity at the state level and demonstrates our ability to design programs
-                            that serve government policy objectives while delivering world-class training.
-                        </p>
-                    </article>
                 </div>
             </section>
 

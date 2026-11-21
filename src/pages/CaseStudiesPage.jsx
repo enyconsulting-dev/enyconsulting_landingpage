@@ -22,20 +22,6 @@ const CASES = [
             'This was one of the most complex transformation programs in Canada’s financial services sector. ENY Consulting’s ability to manage stakeholder complexity, drive requirements clarity, and keep the program on track was critical to its success.',
     },
     {
-        industry: 'Government / Education',
-        title: 'Lagos State Ministry of Tertiary Education — AI Workforce Development Initiative',
-        challenge:
-            'Lagos State recognized the urgent need to prepare its tertiary education system for an AI-driven economy. Institutions lacked AI-integrated curricula, instructors lacked AI pedagogical training, and students had limited access to practical AI skills development. The Ministry sought a partner with global credibility and local understanding to design and deliver a comprehensive program.',
-        approach:
-            'ENY Consulting was selected through a competitive process to design the initiative. Our approach includes: developing AI-integrated curriculum modules aligned with global standards, conducting train-the-trainer programs for tertiary institution instructors, delivering student-facing AI workshops with practical, hands-on components, and creating assessment frameworks that measure real-world AI competency.',
-        results: [
-            'State-level government partnership secured',
-            'AI curriculum designed for tertiary institutions',
-            'Instructor capacity building program developed',
-            'Pipeline for student AI skills development established',
-        ],
-    },
-    {
         industry: 'Professional Development / EdTech',
         title: 'Building the World’s Largest Business Analysis Training Ecosystem',
         challenge:
